@@ -23,4 +23,34 @@ export class LocationsService {
     return this.httpService.requestCall(ApiMethod.DELETE, `${ApiEndpoint.LOCATIONS}/${id}`) as Observable<any>;
   }
 
+
+  updateLocation(locationPayload: Location){
+    return this.httpService.requestCall(ApiMethod.PUT, ApiEndpoint.LOCATIONS, locationPayload) as Observable<any>;
+  }
+
+
+  returnUpdateLocationPayload(currentlySavedLocation: Location, newLocation: Location): Location{
+
+    return {
+      locationId: currentlySavedLocation.locationId,
+      isActive: currentlySavedLocation.isActive == newLocation.isActive ? null : newLocation.isActive,
+      streetAddress: currentlySavedLocation.streetAddress == newLocation.streetAddress ? null : newLocation.streetAddress,
+      city: currentlySavedLocation.city == newLocation.city ? null : newLocation.city,
+      zipcode: currentlySavedLocation.zipcode == newLocation.zipcode ? null : newLocation.zipcode,
+      state: currentlySavedLocation.state == newLocation.state ? null : newLocation.state,
+      countryCode: {
+        countryCodeId: currentlySavedLocation.countryCode.countryCodeId == newLocation.countryCode.countryCodeId ? null : newLocation.countryCode.countryCodeId,
+        isActive: null,
+        countryCode: null
+      },
+      activity: {
+        activityId: currentlySavedLocation.activity.activityId == newLocation.activity.activityId ? null : newLocation.activity.activityId,
+        isActive: null,
+        activityName: null
+      },
+      companyName: currentlySavedLocation.companyName == newLocation.companyName ? null : newLocation.companyName,
+    };
+  }
+
+
 }

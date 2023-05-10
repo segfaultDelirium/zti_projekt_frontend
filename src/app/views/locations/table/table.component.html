@@ -29,10 +29,48 @@
       <td mat-cell *matCellDef="let element"> {{element.city}} </td>
     </ng-container>
   
-    <ng-container matColumnDef="deactivate">
-        <th mat-header-cell *matHeaderCellDef> Deactivate </th>
-        <td mat-cell *matCellDef="let element"> <button (click)="deactivate(element)">Deactivate</button> </td>
-      </ng-container>
+    <ng-container matColumnDef="zipcode">
+        <th mat-header-cell *matHeaderCellDef> zipcode </th>
+        <td mat-cell *matCellDef="let element"> {{element.zipcode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef> state </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="countryCode">
+        <th mat-header-cell *matHeaderCellDef> countryCode </th>
+        <td mat-cell *matCellDef="let element"> {{element.countryCode.countryCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="activityName">
+        <th mat-header-cell *matHeaderCellDef> activityName </th>
+        <td mat-cell *matCellDef="let element"> {{element.activity.activityName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="companyName">
+        <th mat-header-cell *matHeaderCellDef> companyName </th>
+        <td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+    </ng-container>
+    
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element"> 
+            <mat-icon aria-hidden="false" fontIcon="edit" (click)="openEditDialog(element)">
+
+            </mat-icon>
+            <mat-icon aria-hidden="false" fontIcon="delete" (click)="deactivate(element)">
+
+            </mat-icon>
+            
+        
+        </td>
+    </ng-container>
+
+    
+      
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
