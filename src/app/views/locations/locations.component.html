@@ -1,6 +1,9 @@
 <p>locations works!</p>
 
 
-<app-table [locations]=" (currentLocations | async) ?? []"></app-table>
+<app-table [locations]="(currentLocations | async) ?? []"
+[activities]="(currentActivities | async) ?? []"
+[countryCodes]="(currentCountryCodes | async) ?? []"
+></app-table>
 
 

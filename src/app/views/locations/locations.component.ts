@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { CountryCode, Location } from 'src/app/types';
+import { Activity, CountryCode, Location } from 'src/app/types';
 import { LocationsService } from './locations.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { LocationsService } from './locations.service';
 export class LocationsComponent implements OnInit{
 
   currentCountryCodes: Observable<CountryCode[]> = of([]);
+  currentActivities: Observable<Activity[]> = of([]);
   currentLocations: Observable<Location[]> = of([]);
 
 
@@ -21,6 +22,7 @@ export class LocationsComponent implements OnInit{
 
     this.currentCountryCodes = this.locationsService.getCurrentCountryCodes();
     this.currentLocations = this.locationsService.getCurrentLocations();
+    this.currentActivities = this.locationsService.getCurrentActivities();
   }
 
   printCountryCode(countryCodes: CountryCode){

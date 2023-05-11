@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CountryCode, Location } from 'src/app/types';
+import { Activity, CountryCode, Location, LocationToSend, ModificationResult } from 'src/app/types';
 import { ApiEndpoint, ApiMethod, HttpService } from 'src/app/util/http/http.service';
 
 @Injectable({
@@ -9,6 +9,10 @@ import { ApiEndpoint, ApiMethod, HttpService } from 'src/app/util/http/http.serv
 export class LocationsService {
 
   constructor(private httpService: HttpService) { }
+
+  public getCurrentActivities(){
+    return this.httpService.requestCall(ApiMethod.GET, ApiEndpoint.ACTIVITIES) as Observable<Activity[]>;
+  }
 
   public getCurrentCountryCodes(){
     return this.httpService.requestCall(ApiMethod.GET, ApiEndpoint.COUNTRY_CODES) as Observable<CountryCode[]>;
@@ -20,16 +24,16 @@ export class LocationsService {
 
 
   deactivateLocation(id: number){
-    return this.httpService.requestCall(ApiMethod.DELETE, `${ApiEndpoint.LOCATIONS}/${id}`) as Observable<any>;
+    return this.httpService.requestCall(ApiMethod.DELETE, `${ApiEndpoint.LOCATIONS}/${id}`) as Observable<ModificationResult>;
   }
 
 
-  updateLocation(locationPayload: Location){
-    return this.httpService.requestCall(ApiMethod.PUT, ApiEndpoint.LOCATIONS, locationPayload) as Observable<any>;
+  updateLocation(locationPayload: LocationToSend){
+    return this.httpService.requestCall(ApiMethod.PUT, ApiEndpoint.LOCATIONS, locationPayload) as Observable<ModificationResult>;
   }
 
 
-  returnUpdateLocationPayload(currentlySavedLocation: Location, newLocation: Location): Location{
+  returnUpdateLocationPayload(currentlySavedLocation: Location, newLocation: Location): LocationToSend{
 
     return {
       locationId: currentlySavedLocation.locationId,
@@ -38,16 +42,19 @@ export class LocationsService {
       city: currentlySavedLocation.city == newLocation.city ? null : newLocation.city,
       zipcode: currentlySavedLocation.zipcode == newLocation.zipcode ? null : newLocation.zipcode,
       state: currentlySavedLocation.state == newLocation.state ? null : newLocation.state,
-      countryCode: {
-        countryCodeId: currentlySavedLocation.countryCode.countryCodeId == newLocation.countryCode.countryCodeId ? null : newLocation.countryCode.countryCodeId,
+
+      countryCode: currentlySavedLocation.countryCode.countryCodeId === newLocation.countryCode.countryCodeId ? null : {
+        countryCodeId: newLocation.countryCode.countryCodeId,
         isActive: null,
         countryCode: null
       },
-      activity: {
-        activityId: currentlySavedLocation.activity.activityId == newLocation.activity.activityId ? null : newLocation.activity.activityId,
+
+      activity: currentlySavedLocation.activity.activityId === newLocation.activity.activityId ? null : {
+        activityId: newLocation.activity.activityId,
         isActive: null,
         activityName: null
       },
+
       companyName: currentlySavedLocation.companyName == newLocation.companyName ? null : newLocation.companyName,
     };
   }

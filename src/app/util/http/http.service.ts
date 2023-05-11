@@ -5,8 +5,11 @@ import { catchError, share } from 'rxjs';
 const apiBaseUrl = 'http://localhost:8080/';
 
 export enum ApiEndpoint{
+  ACTIVITIES = 'activities',
+  COUNTRY_CODES = 'country_codes',
   LOCATIONS = 'locations',
-  COUNTRY_CODES = 'country_codes'
+  
+  
 }
 
 export enum ApiMethod {
