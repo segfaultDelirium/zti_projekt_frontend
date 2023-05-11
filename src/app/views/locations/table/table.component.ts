@@ -1,9 +1,10 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, Output } from '@angular/core';
 import { Activity, CountryCode, Location, LocationToSend } from 'src/app/types';
 import { LocationsService } from '../locations.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateLocationDialogComponent } from 'src/app/dialogs/update-location-dialog/update-location-dialog.component';
+import { ModificationResultDialogComponent } from 'src/app/dialogs/modification-result-dialog/modification-result-dialog.component';
 
 @Component({
   selector: 'app-table',
@@ -22,13 +23,16 @@ export class TableComponent implements OnDestroy{
   "actions"
 ]
  
-  updateSubscriptions: Subscription[] = []
-  deactivateSubscriptions: Subscription[] = []
+  updateSubscriptions: Subscription[] = [];
+  deactivateSubscriptions: Subscription[] = [];
+  reactivateSubscriptions: Subscription[] = [];
 
   constructor(public dialog: MatDialog, private locationsService: LocationsService){}
 
   ngOnDestroy(): void {
+    this.updateSubscriptions.forEach(subscription => subscription.unsubscribe());
     this.deactivateSubscriptions.forEach(subscription => subscription.unsubscribe());
+    this.reactivateSubscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
   printLocations(){
@@ -37,10 +41,21 @@ export class TableComponent implements OnDestroy{
 
   deactivate(location: Location){
     const subscription = this.locationsService.deactivateLocation(location.locationId).subscribe(result => {
-      console.log(result);
+      this.dialog.open(ModificationResultDialogComponent, {
+        data: result
+      });
     })
     this.deactivateSubscriptions.push(subscription);
 
+  }
+
+  reactivate(location: Location){
+    const subscription = this.locationsService.reactivateLocation(location.locationId).subscribe(result => {
+      this.dialog.open(ModificationResultDialogComponent, {
+        data: result
+      });
+    })
+    this.reactivateSubscriptions.push(subscription);
   }
 
   openEditDialog(location: Location){

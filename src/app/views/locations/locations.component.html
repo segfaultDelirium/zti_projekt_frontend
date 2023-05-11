@@ -1,9 +1,14 @@
 <p>locations works!</p>
 
+<div>
+    <app-table [locations]="(currentLocations | async) ?? []" [activities]="(currentActivities | async) ?? []"
+        [countryCodes]="(currentCountryCodes | async) ?? []"></app-table>
+    <mat-card id="tableFooter">
+        <mat-card-content>
+            <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="refresh" (click)="refreshTable()">
 
-<app-table [locations]="(currentLocations | async) ?? []"
-[activities]="(currentActivities | async) ?? []"
-[countryCodes]="(currentCountryCodes | async) ?? []"
-></app-table>
+            </mat-icon>
+    </mat-card-content>
+        </mat-card>
 
-
+</div>

@@ -28,5 +28,9 @@ export class LocationsComponent implements OnInit{
   printCountryCode(countryCodes: CountryCode){
     console.log(countryCodes);
   }
+
+  refreshTable(){
+    this.currentLocations = this.locationsService.getCurrentLocations();
+  }
   
 }

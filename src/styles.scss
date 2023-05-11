@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-dialog-actions{
+    justify-content: end !important;
+}
+
+input.modified, mat-select.modified {
+    background-color: #e6ffe6;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}

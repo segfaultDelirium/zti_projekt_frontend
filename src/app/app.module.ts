@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { UpdateLocationDialogComponent } from './dialogs/update-location-dialog/update-location-dialog.component';
 import { MaterialModule } from './util/material/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { ModificationResultDialogComponent } from './dialogs/modification-result-dialog/modification-result-dialog.component'
+import { ModificationResultDialogComponent } from './dialogs/modification-result-dialog/modification-result-dialog.component';
+import { AddLocationDialogComponent } from './dialogs/add-location-dialog/add-location-dialog.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     UpdateLocationDialogComponent,
-    ModificationResultDialogComponent
+    ModificationResultDialogComponent,
+    AddLocationDialogComponent
   ],
   imports: [
     BrowserModule,

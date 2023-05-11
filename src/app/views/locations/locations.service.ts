@@ -27,6 +27,9 @@ export class LocationsService {
     return this.httpService.requestCall(ApiMethod.DELETE, `${ApiEndpoint.LOCATIONS}/${id}`) as Observable<ModificationResult>;
   }
 
+  reactivateLocation(id: number){
+    return this.httpService.requestCall(ApiMethod.PUT, `${ApiEndpoint.LOCATIONS}/${id}`) as Observable<ModificationResult>;
+  }
 
   updateLocation(locationPayload: LocationToSend){
     return this.httpService.requestCall(ApiMethod.PUT, ApiEndpoint.LOCATIONS, locationPayload) as Observable<ModificationResult>;
