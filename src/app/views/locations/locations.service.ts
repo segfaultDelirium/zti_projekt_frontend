@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Activity, CountryCode, Location, LocationToSend, ModificationResult } from 'src/app/types';
+import { Activity, CountryCode, CreationResult, Location, LocationToSend, ModificationResult } from 'src/app/types';
 import { ApiEndpoint, ApiMethod, HttpService } from 'src/app/util/http/http.service';
 
 @Injectable({
@@ -22,6 +22,9 @@ export class LocationsService {
     return this.httpService.requestCall(ApiMethod.GET, ApiEndpoint.LOCATIONS) as Observable<Location[]>;
   }
 
+  createLocation(location: Location){
+    return this.httpService.requestCall(ApiMethod.POST, ApiEndpoint.LOCATIONS, location) as Observable<CreationResult>;
+  }
 
   deactivateLocation(id: number){
     return this.httpService.requestCall(ApiMethod.DELETE, `${ApiEndpoint.LOCATIONS}/${id}`) as Observable<ModificationResult>;

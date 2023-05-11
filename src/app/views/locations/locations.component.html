@@ -5,10 +5,15 @@
         [countryCodes]="(currentCountryCodes | async) ?? []"></app-table>
     <mat-card id="tableFooter">
         <mat-card-content>
-            <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="refresh" (click)="refreshTable()">
-
-            </mat-icon>
-    </mat-card-content>
-        </mat-card>
+            <app-create-button
+                matTooltip="Create Location"
+                [activities]="(currentActivities | async) ?? []"
+                [countryCodes]="(currentCountryCodes | async) ?? []"
+            ></app-create-button>
+            <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="refresh" (click)="refreshTable()"
+                matTooltip="Refresh Table"
+            ></mat-icon>
+        </mat-card-content>
+    </mat-card>
 
 </div>

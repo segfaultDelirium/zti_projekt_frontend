@@ -9,14 +9,15 @@ import { UpdateLocationDialogComponent } from './dialogs/update-location-dialog/
 import { MaterialModule } from './util/material/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ModificationResultDialogComponent } from './dialogs/modification-result-dialog/modification-result-dialog.component';
-import { AddLocationDialogComponent } from './dialogs/add-location-dialog/add-location-dialog.component'
+import { CreateLocationDialogComponent } from './dialogs/create-location-dialog/create-location-dialog.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UpdateLocationDialogComponent,
     ModificationResultDialogComponent,
-    AddLocationDialogComponent
+    CreateLocationDialogComponent,
   ],
   imports: [
     BrowserModule,

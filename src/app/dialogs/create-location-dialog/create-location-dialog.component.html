@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Create Location </h1>
+<div mat-dialog-content class="form-fields-container">
+
+    <mat-form-field appearance="fill">
+        <mat-label>streetAddress</mat-label>
+        <input matInput [(ngModel)]="data.newLocation.streetAddress" >
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>city</mat-label>
+        <input matInput [(ngModel)]="data.newLocation.city">
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>zipcode</mat-label>
+        <input matInput [(ngModel)]="data.newLocation.zipcode" >
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>state</mat-label>
+        <input matInput [(ngModel)]="data.newLocation.state" >
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>companyName</mat-label>
+        <input matInput [(ngModel)]="data.newLocation.companyName">
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>countryCode</mat-label>
+        <mat-select [(ngModel)]="data.newLocation.countryCode" name="countryCode" >
+            <mat-option *ngFor="let countryCode of data.countryCodes" [value]="countryCode">
+                {{countryCode.countryCode}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+        <mat-label>activity</mat-label>
+        <mat-select [(ngModel)]="data.newLocation.activity" name="activity" >
+            <mat-option *ngFor="let activity of data.activities" [value]="activity">
+                {{activity.activityName}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<div class="mat-dialog-actions" mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="save(data.newLocation)">Send Update</button>
+</div>

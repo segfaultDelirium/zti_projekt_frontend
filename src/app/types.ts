@@ -17,6 +17,26 @@ export type Location = {
     companyName: string;
 }
 
+export const DEFAULT_LOCATION: Location = {
+    locationId: 0,
+    isActive: true,
+    streetAddress: '',
+    city: '',
+    zipcode: '',
+    state: '',
+    countryCode: {
+        countryCodeId: 0,
+        countryCode: '',
+        isActive: true
+    },
+    activity: {
+        activityId: 0,
+        activityName: '',
+        isActive: true
+    },
+    companyName: ''
+}
+
 export type LocationToSend = {
     locationId: number;
     isActive: boolean | null;
@@ -35,7 +55,18 @@ export type Activity = {
     activityName: string | null;
 }
 
-export type ModificationResult = {
+export interface ModificationResult {
     success: boolean;
     message: string;
+}
+
+export interface CreationResult extends ModificationResult {
+    createdRecordId: number
+}
+
+export type LocationActivitiesCountryCodes = {
+    activities: Activity[],
+    countryCodes: CountryCode[],
+    location: Location,
+    currentlySavedLocation: Readonly<Location>
 }

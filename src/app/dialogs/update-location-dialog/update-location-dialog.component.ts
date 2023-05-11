@@ -1,17 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { Activity, CountryCode, Location, LocationToSend, ModificationResult } from 'src/app/types';
+import { Activity, CountryCode, Location, LocationActivitiesCountryCodes, LocationToSend, ModificationResult } from 'src/app/types';
 import { HttpService } from 'src/app/util/http/http.service';
 import { LocationsService } from 'src/app/views/locations/locations.service';
 import { ModificationResultDialogComponent } from '../modification-result-dialog/modification-result-dialog.component';
 
-export type LocationActivitiesCountryCodes = {
-  activities: Activity[],
-  countryCodes: CountryCode[],
-  location: Location,
-  currentlySavedLocation: Readonly<Location>
-}
+
 
 @Component({
   selector: 'app-update-location-dialog',

@@ -60,18 +60,18 @@
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
 
-        <mat-icon aria-hidden="false"  class="cursor-pointer" fontIcon="edit" (click)="openEditDialog(element)">
-
-        </mat-icon>
+        <mat-icon aria-hidden="false"  class="cursor-pointer" fontIcon="edit" (click)="openEditDialog(element)"
+          matTooltip="Edit"
+        ></mat-icon>
         <mat-icon *ngIf="element.isActive; else reactivateButton" class="cursor-pointer" aria-hidden="false" fontIcon="delete"
-          (click)="deactivate(element)">
-
-        </mat-icon>
+          (click)="deactivate(element)"
+            matTooltip="Deactivate"
+          ></mat-icon>
 
         <ng-template #reactivateButton>
-          <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="medical_services" (click)="reactivate(element)">
-
-          </mat-icon>
+          <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="medical_services" (click)="reactivate(element)"
+          matTooltip="Reactivate"
+          ></mat-icon>
         </ng-template>
 
 
