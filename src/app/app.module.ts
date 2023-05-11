@@ -10,6 +10,7 @@ import { MaterialModule } from './util/material/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ModificationResultDialogComponent } from './dialogs/modification-result-dialog/modification-result-dialog.component';
 import { CreateLocationDialogComponent } from './dialogs/create-location-dialog/create-location-dialog.component';
+import { TimelineDialogComponent } from './dialogs/timeline-dialog/timeline-dialog.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CreateLocationDialogComponent } from './dialogs/create-location-dialog/
     UpdateLocationDialogComponent,
     ModificationResultDialogComponent,
     CreateLocationDialogComponent,
+    TimelineDialogComponent,
   ],
   imports: [
     BrowserModule,

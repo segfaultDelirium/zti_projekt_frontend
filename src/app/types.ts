@@ -15,6 +15,7 @@ export type Location = {
     countryCode: CountryCode;
     activity: Activity;
     companyName: string;
+    timestamp: string;
 }
 
 export const DEFAULT_LOCATION: Location = {
@@ -34,7 +35,8 @@ export const DEFAULT_LOCATION: Location = {
         activityName: '',
         isActive: true
     },
-    companyName: ''
+    companyName: '',
+    timestamp: '2023-01-15'
 }
 
 export type LocationToSend = {

@@ -38,6 +38,9 @@ export class LocationsService {
     return this.httpService.requestCall(ApiMethod.PUT, ApiEndpoint.LOCATIONS, locationPayload) as Observable<ModificationResult>;
   }
 
+  getLocationTimelineGroupedByTimestamp(id: number){
+    return this.httpService.requestCall(ApiMethod.GET, `${ApiEndpoint.LOCATIONS}/${id}`) as Observable<Location[]>; 
+  }
 
   returnUpdateLocationPayload(currentlySavedLocation: Location, newLocation: Location): LocationToSend{
 
@@ -64,6 +67,8 @@ export class LocationsService {
       companyName: currentlySavedLocation.companyName == newLocation.companyName ? null : newLocation.companyName,
     };
   }
+
+  
 
 
 }

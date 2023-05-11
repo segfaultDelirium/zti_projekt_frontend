@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Activity, CountryCode, Location } from 'src/app/types';
 import { LocationsService } from './locations.service';
-import { MatDialog } from '@angular/material/dialog';
-import { CreateLocationDialogComponent } from 'src/app/dialogs/create-location-dialog/create-location-dialog.component';
 
 @Component({
   selector: 'app-locations',
@@ -20,7 +18,6 @@ export class LocationsComponent implements OnInit{
   constructor(private locationsService: LocationsService){}
 
   ngOnInit(): void {
-    console.log('hello from ngOnInit()')
 
     this.currentCountryCodes = this.locationsService.getCurrentCountryCodes();
     this.currentLocations = this.locationsService.getCurrentLocations();

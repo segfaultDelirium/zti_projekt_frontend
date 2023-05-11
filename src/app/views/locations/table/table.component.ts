@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateLocationDialogComponent } from 'src/app/dialogs/update-location-dialog/update-location-dialog.component';
 import { ModificationResultDialogComponent } from 'src/app/dialogs/modification-result-dialog/modification-result-dialog.component';
+import { TimelineDialogComponent } from 'src/app/dialogs/timeline-dialog/timeline-dialog.component';
 
 @Component({
   selector: 'app-table',
@@ -66,6 +67,20 @@ export class TableComponent implements OnDestroy{
         location: JSON.parse(JSON.stringify(location)),
         currentlySavedLocation: currentlySavedLocation,
         countryCodes: this.countryCodes
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === undefined) return;
+      if(result === '') return;
+
+    });
+  }
+
+  openTimelineDialog(location: Location){
+    const dialogRef = this.dialog.open(TimelineDialogComponent, {
+      data: {
+        location: JSON.parse(JSON.stringify(location)),
       },
     });
 
