@@ -3,47 +3,46 @@
 
     <mat-form-field appearance="fill">
         <mat-label>streetAddress</mat-label>
-        <input matInput [(ngModel)]="data.location.streetAddress">
+        <input matInput [(ngModel)]="data.location.streetAddress" [ngClass]="{'modified': data.location.streetAddress !== data.currentlySavedLocation.streetAddress}">
     </mat-form-field>
-
+    
     <mat-form-field appearance="fill">
         <mat-label>city</mat-label>
-        <input matInput [(ngModel)]="data.location.city">
+        <input matInput [(ngModel)]="data.location.city" [ngClass]="{'modified': data.location.city !==data.currentlySavedLocation.city}">
     </mat-form-field>
-
+    
     <mat-form-field appearance="fill">
         <mat-label>zipcode</mat-label>
-        <input matInput [(ngModel)]="data.location.zipcode">
+        <input matInput [(ngModel)]="data.location.zipcode"  [ngClass]="{'modified': data.location.zipcode !== data.currentlySavedLocation.zipcode}">
     </mat-form-field>
-
+    
     <mat-form-field appearance="fill">
         <mat-label>state</mat-label>
-        <input matInput [(ngModel)]="data.location.state">
+        <input matInput [(ngModel)]="data.location.state" [ngClass]="{'modified': data.location.state !== data.currentlySavedLocation.state}">
     </mat-form-field>
-
+    
     <mat-form-field appearance="fill">
         <mat-label>companyName</mat-label>
-        <input matInput [(ngModel)]="data.location.companyName">
+        <input matInput [(ngModel)]="data.location.companyName" [ngClass]="{'modified': data.location.companyName !== data.currentlySavedLocation.companyName}">
     </mat-form-field>
-
+    
     <mat-form-field appearance="fill">
         <mat-label>countryCode</mat-label>
-        <mat-select [(ngModel)]="data.location.countryCode" name="food">
-          <mat-option *ngFor="let countryCode of data.countryCodes" [value]="countryCode">
-            {{countryCode.countryCode}}
-          </mat-option>
+        <mat-select [(ngModel)]="data.location.countryCode" name="countryCode"  [ngClass]="{'modified': data.location.countryCode.countryCodeId !== data.currentlySavedLocation.countryCode.countryCodeId}">
+            <mat-option *ngFor="let countryCode of data.countryCodes" [value]="countryCode">
+                {{countryCode.countryCode}}
+            </mat-option>
         </mat-select>
     </mat-form-field>
-
+    
     <mat-form-field appearance="fill">
         <mat-label>activity</mat-label>
-        <mat-select [(ngModel)]="data.location.activity" name="food">
-          <mat-option *ngFor="let activity of data.activities" [value]="activity">
-            {{activity.activityName}}
-          </mat-option>
+        <mat-select [(ngModel)]="data.location.activity" name="activity" [ngClass]="{'modified': data.location.activity.activityId !== data.currentlySavedLocation.activity.activityId}">
+            <mat-option *ngFor="let activity of data.activities" [value]="activity">
+                {{activity.activityName}}
+            </mat-option>
         </mat-select>
     </mat-form-field>
-
 </div>
 
 <div class="mat-dialog-actions" mat-dialog-actions>

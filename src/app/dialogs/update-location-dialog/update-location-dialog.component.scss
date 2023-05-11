@@ -1,3 +1,7 @@
 .mat-dialog-actions{
     justify-content: end;
 }
+
+input.modified, mat-select.modified {
+    background-color: #e6ffe6;
+}
