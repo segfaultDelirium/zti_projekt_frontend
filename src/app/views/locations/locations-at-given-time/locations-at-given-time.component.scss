@@ -1,0 +1,32 @@
+
+#tableHeader{
+    
+    border-radius: 0;
+    mat-card-content{
+        display: flex;
+        justify-content: end;
+    }
+}
+
+// mat-icon {
+//     margin: 10px;
+// }
+
+mat-card-content *{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+.datepicker-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.refresh-button-container{
+    & button{
+        margin-left: 10px;
+    }   
+}

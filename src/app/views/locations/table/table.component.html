@@ -4,7 +4,7 @@
   <table mat-table [dataSource]="locations" class="mat-elevation-z8">
 
     <ng-container matColumnDef="locationId">
-      <th mat-header-cell *matHeaderCellDef> locationId. </th>
+      <th mat-header-cell *matHeaderCellDef> locationId </th>
       <td mat-cell *matCellDef="let element"> {{element.locationId}} </td>
     </ng-container>
 
@@ -56,24 +56,24 @@
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element">
 
-
-        <mat-icon aria-hidden="false"  class="cursor-pointer" fontIcon="timeline" (click)="openTimelineDialog(element)"
-          matTooltip="View history"
-        ></mat-icon>
-        <mat-icon aria-hidden="false"  class="cursor-pointer" fontIcon="edit" (click)="openEditDialog(element)"
-          matTooltip="Edit"
-        ></mat-icon>
-        <mat-icon *ngIf="element.isActive; else reactivateButton" class="cursor-pointer" aria-hidden="false" fontIcon="delete"
-          (click)="deactivate(element)"
-            matTooltip="Deactivate"
-          ></mat-icon>
-
-        <ng-template #reactivateButton>
-          <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="medical_services" (click)="reactivate(element)"
-          matTooltip="Reactivate"
-          ></mat-icon>
-        </ng-template>
-
+        <button mat-icon-button (click)="openTimelineDialog(element)" matTooltip="View history">
+          <mat-icon aria-hidden="false" fontIcon="timeline" ></mat-icon>
+        </button>
+        
+        <button *ngIf="isReadOnly === false" mat-icon-button (click)="openEditDialog(element)" matTooltip="Edit">
+          <mat-icon aria-hidden="false" fontIcon="edit" ></mat-icon>
+        </button>
+        
+        <ng-container *ngIf="isReadOnly === false">
+          <button *ngIf="element.isActive; else reactivateButton" mat-icon-button (click)="deactivate(element)" matTooltip="Deactivate">
+            <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+          </button>
+          <ng-template #reactivateButton>
+            <button  mat-icon-button (click)="reactivate(element)" matTooltip="Reactivate">
+              <mat-icon aria-hidden="false" fontIcon="medical_services" ></mat-icon>
+            </button>          
+          </ng-template>
+        </ng-container>
         
 
       </td>

@@ -15,8 +15,7 @@ import { TimelineDialogComponent } from 'src/app/dialogs/timeline-dialog/timelin
 export class TableComponent implements OnDestroy{
 
   @Input() locations: Location[] = [];
-  @Input() activities: Activity[] = [];
-  @Input() countryCodes: CountryCode[] = [];
+  @Input() isReadOnly: boolean = false;
 
   displayedColumns: string[] = [
     "locationId", "isActive", "streetAddress", "city", 
@@ -63,10 +62,8 @@ export class TableComponent implements OnDestroy{
     const currentlySavedLocation: Readonly<Location> = JSON.parse(JSON.stringify(location));
     const dialogRef = this.dialog.open(UpdateLocationDialogComponent, {
       data: {
-        activities: this.activities,
         location: JSON.parse(JSON.stringify(location)),
         currentlySavedLocation: currentlySavedLocation,
-        countryCodes: this.countryCodes
       },
     });
 

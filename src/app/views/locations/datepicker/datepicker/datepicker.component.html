@@ -1,0 +1,10 @@
+
+<mat-form-field>
+    <!-- <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date & time" [(ngModel)]="date"> -->
+    <!-- (dateChange)="handleDateChange2($event)" (change)="handleDateChange3($event)" -->
+    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date & time" [formControl]="date" (dateChange)="handleDateChange($event)" />
+    
+    <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+
+    <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+</mat-form-field>

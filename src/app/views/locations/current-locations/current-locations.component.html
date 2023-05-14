@@ -1,0 +1,10 @@
+<mat-card id="tableHeader">
+    <mat-card-content>
+        <app-create-button matTooltip="Create Location" [activities]="(currentActivities | async) ?? []"
+            [countryCodes]="(currentCountryCodes | async) ?? []"></app-create-button>
+        <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="refresh" (click)="refreshTable()"
+            matTooltip="Refresh Table"></mat-icon>
+    </mat-card-content>
+</mat-card>
+<app-table [locations]="(currentLocations | async) ?? []" ></app-table>
+
