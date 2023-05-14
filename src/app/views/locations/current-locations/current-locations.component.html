@@ -1,16 +1,18 @@
-<mat-card id="tableHeader">
-    <mat-card-content>
-        
-        <button  mat-icon-button (click)="openCreateLocationDialog()" matTooltip="Create Location">
-            <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="playlist_add" ></mat-icon>
-        </button>
-            
-        <button  mat-icon-button (click)="refreshTable()" matTooltip="Refresh Table">
-            <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="refresh" ></mat-icon>
-        </button>
-              
-        
-    </mat-card-content>
-</mat-card>
-<app-table [locations]="(currentLocations | async) ?? []" ></app-table>
+<div class="table-container">
+    <mat-card id="tableHeader">
+        <mat-card-content>
 
+            <button mat-icon-button (click)="openCreateLocationDialog()" matTooltip="Create Location">
+                <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="playlist_add"></mat-icon>
+            </button>
+
+            <button mat-icon-button (click)="refreshTable()" matTooltip="Refresh Table">
+                <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="refresh"></mat-icon>
+            </button>
+
+
+        </mat-card-content>
+    </mat-card>
+
+    <app-table [locations]="(currentLocations | async) ?? []"></app-table>
+</div>
