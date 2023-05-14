@@ -1,0 +1,16 @@
+:host{
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    margin-top: 20px;
+}
+
+app-datepicker{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.settings{
+    display: flex;
+    align-items: center;
+}

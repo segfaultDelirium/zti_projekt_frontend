@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { LocationsRoutingModule } from './locations-routing.module';
 import { LocationsComponent } from './locations.component';
-import { TableComponent } from './table/table.component';
+import { TableComponent } from './components/table/table.component';
 import { MaterialModule } from 'src/app/util/material/material.module';
-import { CreateButtonComponent } from './create-button/create-button.component';
-import { DatepickerComponent } from './datepicker/datepicker/datepicker.component';
+import { CreateButtonComponent } from './components/create-button/create-button.component';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrentLocationsComponent } from './current-locations/current-locations.component';
 import { LocationsAtGivenTimeComponent } from './locations-at-given-time/locations-at-given-time.component';
+import { ChangesBetweenDatesComponent } from './changes-between-dates/changes-between-dates.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { LocationsAtGivenTimeComponent } from './locations-at-given-time/locatio
     CreateButtonComponent,
     DatepickerComponent,
     CurrentLocationsComponent,
-    LocationsAtGivenTimeComponent
+    LocationsAtGivenTimeComponent,
+    ChangesBetweenDatesComponent
   ],
   imports: [
     CommonModule,

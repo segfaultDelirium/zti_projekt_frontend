@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, Output } from '@angular/core';
 import { Activity, CountryCode, Location, LocationToSend } from 'src/app/types';
-import { LocationsService } from '../locations.service';
+import { LocationsService } from '../../locations.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateLocationDialogComponent } from 'src/app/dialogs/update-location-dialog/update-location-dialog.component';

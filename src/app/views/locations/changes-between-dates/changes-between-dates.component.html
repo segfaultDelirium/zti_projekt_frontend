@@ -1,0 +1,13 @@
+
+<div class="settings">
+    <!-- [initialDate]="getYesterdatDate()" -->
+    <app-datepicker [title]="'start date'" (dateChange)="handleStartDateChange($event)" [initialDate]="yesterdayDate"  ></app-datepicker>
+
+    <app-datepicker [title]="'end date'" (dateChange)="handleEndDateChange($event)"></app-datepicker>
+
+    <div class="refresh-button-container">
+        <button mat-raised-button color="primary" (click)="refreshTable(startDate, endDate)" [disabled]="areDatesInvalid(startDate, endDate)">Refresh</button>
+        <div style="height: 22.25px"></div>
+    </div>
+
+</div>

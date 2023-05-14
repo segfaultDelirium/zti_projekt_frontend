@@ -50,16 +50,16 @@ export class DatepickerComponent {
     this.dateChange.emit(this.date.value!.toISOString());
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  // ngOnChanges(changes: SimpleChanges): void {
     
-    let initialDateChanges = changes['initialDate'];
-    if (!initialDateChanges) return;
-    if(initialDateChanges.currentValue === '') return;
-    // console.log(`setting date to ${initialDateChanges.currentValue}`)
-    // debugger;
-    this.setDate(initialDateChanges.currentValue);
-    this.dateChange.emit(this.date.value!.toISOString());
-  }
+  //   let initialDateChanges = changes['initialDate'];
+  //   if (!initialDateChanges) return;
+  //   if(initialDateChanges.currentValue === '') return;
+  //   // console.log(`setting date to ${initialDateChanges.currentValue}`)
+  //   // debugger;
+  //   this.setDate(initialDateChanges.currentValue);
+  //   this.dateChange.emit(this.date.value!.toISOString());
+  // }
   
   setDate(isoDate: string){
     this.date.setValue(moment(isoDate));
