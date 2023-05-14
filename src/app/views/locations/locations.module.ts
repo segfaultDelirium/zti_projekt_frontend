@@ -5,7 +5,6 @@ import { LocationsRoutingModule } from './locations-routing.module';
 import { LocationsComponent } from './locations.component';
 import { TableComponent } from './components/table/table.component';
 import { MaterialModule } from 'src/app/util/material/material.module';
-import { CreateButtonComponent } from './components/create-button/create-button.component';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrentLocationsComponent } from './current-locations/current-locations.component';
@@ -17,7 +16,6 @@ import { ChangesBetweenDatesComponent } from './changes-between-dates/changes-be
   declarations: [
     LocationsComponent,
     TableComponent,
-    CreateButtonComponent,
     DatepickerComponent,
     CurrentLocationsComponent,
     LocationsAtGivenTimeComponent,
