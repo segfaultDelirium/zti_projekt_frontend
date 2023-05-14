@@ -77,7 +77,7 @@ export class TableComponent implements OnDestroy{
   openTimelineDialog(location: Location){
     const dialogRef = this.dialog.open(TimelineDialogComponent, {
       data: {
-        location: JSON.parse(JSON.stringify(location)),
+        locationId: location.locationId
       },
     });
 

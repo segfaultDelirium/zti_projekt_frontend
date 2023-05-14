@@ -9,7 +9,7 @@ export enum ApiEndpoint{
   COUNTRY_CODES = 'country_codes',
   LOCATIONS = 'locations',
   LOCATIONS_AT_GIVEN_TIME = 'locations/at-given-time', // example /locations-at-given-time/2023-04-13 23:45:16
-  
+  LOCATIONS_TIMELINE = 'locations/timeline'
   
 }
 

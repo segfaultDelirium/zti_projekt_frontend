@@ -39,8 +39,12 @@ export class LocationsService {
   }
 
   getLocationTimelineGroupedByTimestamp(id: number){
-    return this.httpService.requestCall(ApiMethod.GET, `${ApiEndpoint.LOCATIONS}/${id}`) as Observable<Location[]>; 
+    return this.httpService.requestCall(ApiMethod.GET, `${ApiEndpoint.LOCATIONS_TIMELINE}/${id}`) as Observable<Location[]>; 
   }
+
+  // getCurrentLocation(id: number){
+  //   return this.httpService.requestCall(ApiMethod.GET, `${ApiEndpoint.LOCATIONS}/${id}`) as Observable<Location>;
+  // }
 
 
   getLocationsAtGivenTime(date: string){

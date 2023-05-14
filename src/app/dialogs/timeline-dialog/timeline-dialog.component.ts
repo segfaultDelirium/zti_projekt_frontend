@@ -7,7 +7,7 @@ import { Location} from 'src/app/types';
 import { LocationsService } from 'src/app/views/locations/locations.service';
 
 type DialogData = {
-  location: Location
+  locationId: number
 }
 
 @Component({
@@ -33,16 +33,12 @@ export class TimelineDialogComponent implements OnInit{
 
 
   ngOnInit(): void {
-    // debugger;
-    this.timeline = this.locationService.getLocationTimelineGroupedByTimestamp(this.data.location.locationId).pipe(
+    this.timeline = this.locationService.getLocationTimelineGroupedByTimestamp(this.data.locationId).pipe(
       map(locations => {
-        return [ addCurrentTimestampToLocation(this.data.location), ...locations]
+        locations[0].timestamp = "current" // locations[0] is the current state of the location.
+        return locations;
       })
     )
-  }
-
-  printTimelineRow(location: Location){
-    console.log(location)
   }
     
 }
