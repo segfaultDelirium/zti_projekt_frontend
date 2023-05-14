@@ -1,5 +1,46 @@
 <p>locations works!</p>
 
+<mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+    <mat-tab label="Current Locations">
+        <div>
+            <app-table [locations]="(currentLocations | async) ?? []" [activities]="(currentActivities | async) ?? []"
+                [countryCodes]="(currentCountryCodes | async) ?? []"></app-table>
+            <mat-card id="tableFooter">
+                <mat-card-content>
+                    <app-create-button matTooltip="Create Location" [activities]="(currentActivities | async) ?? []"
+                        [countryCodes]="(currentCountryCodes | async) ?? []"></app-create-button>
+                    <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="refresh" (click)="refreshTable()"
+                        matTooltip="Refresh Table"></mat-icon>
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+    </mat-tab>
+    <mat-tab label="Locations at given Time">
+        <div class="datepicker-container">
+            <app-datepicker></app-datepicker>
+        </div>
+        <div>
+            <app-table [locations]="(currentLocations | async) ?? []" [activities]="(currentActivities | async) ?? []"
+                [countryCodes]="(currentCountryCodes | async) ?? []"></app-table>
+            <mat-card id="tableFooter">
+                <mat-card-content>
+                    <app-create-button matTooltip="Create Location" [activities]="(currentActivities | async) ?? []"
+                        [countryCodes]="(currentCountryCodes | async) ?? []"></app-create-button>
+                    <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="refresh" (click)="refreshTable()"
+                        matTooltip="Refresh Table"></mat-icon>
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+
+    </mat-tab>
+    <!-- <mat-tab label="Third">Content 3</mat-tab> -->
+</mat-tab-group>
+
+<!-- <div>
+    <app-datepicker></app-datepicker>
+</div>
 <div>
     <app-table [locations]="(currentLocations | async) ?? []" [activities]="(currentActivities | async) ?? []"
         [countryCodes]="(currentCountryCodes | async) ?? []"></app-table>
@@ -16,4 +57,4 @@
         </mat-card-content>
     </mat-card>
 
-</div>
+</div> -->

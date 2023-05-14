@@ -24,7 +24,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from '@angular-material-components/datetime-picker';
+import { CustomNgxDateTimeModule } from 'src/app/views/locations/datepicker/datepicker/custom-ngx-datetime-module';
 
 const materialModules = [
   MatIconModule,
@@ -49,7 +56,12 @@ const materialModules = [
   MatButtonToggleModule,
   MatDialogModule,
   MatToolbarModule,
-  MatTableModule
+  MatTableModule,
+  MatDatepickerModule,
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule,
+  CustomNgxDateTimeModule,
 ]
 
 @NgModule({
