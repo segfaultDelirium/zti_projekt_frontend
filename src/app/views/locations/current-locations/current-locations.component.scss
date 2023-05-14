@@ -1,0 +1,16 @@
+
+#tableHeader{
+    
+    border-radius: 0;
+    mat-card-content{
+        display: flex;
+        justify-content: end;
+    }
+}
+
+
+mat-card-content *{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+

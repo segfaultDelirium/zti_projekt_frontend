@@ -8,6 +8,8 @@ import { MaterialModule } from 'src/app/util/material/material.module';
 import { CreateButtonComponent } from './create-button/create-button.component';
 import { DatepickerComponent } from './datepicker/datepicker/datepicker.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CurrentLocationsComponent } from './current-locations/current-locations.component';
+import { LocationsAtGivenTimeComponent } from './locations-at-given-time/locations-at-given-time.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LocationsComponent,
     TableComponent,
     CreateButtonComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    CurrentLocationsComponent,
+    LocationsAtGivenTimeComponent
   ],
   imports: [
     CommonModule,

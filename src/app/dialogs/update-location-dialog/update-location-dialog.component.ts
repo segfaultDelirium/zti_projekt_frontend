@@ -14,6 +14,11 @@ import { ModificationResultDialogComponent } from '../modification-result-dialog
   styleUrls: ['./update-location-dialog.component.scss']
 })
 export class UpdateLocationDialogComponent {
+  activities: Activity[] = [];
+  countryCodes: CountryCode[] = [];
+
+  activitiesSubscription?: Subscription;
+  countryCodesSubscription?: Subscription;
 
   constructor(
     public dialogRef: MatDialogRef<UpdateLocationDialogComponent>,
@@ -27,11 +32,26 @@ export class UpdateLocationDialogComponent {
 
   ngOnInit(){
 
-    this.data.location.countryCode = this.data.countryCodes
-      .filter(countryCode => countryCode.countryCodeId === this.data.location.countryCode.countryCodeId)[0];
+    this.activitiesSubscription = this.locationsService.getCurrentActivities().subscribe(activities => {
+      this.activities = activities;
 
-    this.data.location.activity = this.data.activities
-      .filter(activity => activity.activityId === this.data.location.activity.activityId)[0]
+      this.data.location.activity = this.data.activities
+        .filter(activity => activity.activityId === this.data.location.activity.activityId)[0]
+
+    })
+
+    this.countryCodesSubscription = this.locationsService.getCurrentCountryCodes().subscribe(countryCodes => {
+      this.countryCodes = countryCodes;
+      
+      this.data.location.countryCode = this.data.countryCodes
+        .filter(countryCode => countryCode.countryCodeId === this.data.location.countryCode.countryCodeId)[0];
+    })
+
+  }
+
+  ngOnDestroy(){
+    this.activitiesSubscription?.unsubscribe();
+    this.countryCodesSubscription?.unsubscribe();
   }
 
   printLocation(){

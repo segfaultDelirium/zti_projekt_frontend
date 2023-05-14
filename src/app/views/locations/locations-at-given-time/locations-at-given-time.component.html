@@ -1,0 +1,22 @@
+<div class="datepicker-container">
+    <app-datepicker (dateChange)="handleDateChange($event)"></app-datepicker>
+    <div class="refresh-button-container">
+        <button mat-raised-button color="primary" (click)="refreshTable(date)" [disabled]="isDateInvalid(date)">Refresh</button>
+        <div style="height: 22.25px"></div>
+    </div>
+    
+</div>
+<div>
+    <mat-card id="tableHeader">
+        <mat-card-content>
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="refreshTable(date)"
+                matTooltip="Refresh Table" [disabled]="isDateInvalid(date)">
+                <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="refresh" ></mat-icon>
+              </button>
+            
+        </mat-card-content>
+    </mat-card>
+    <app-table [locations]="(locations | async) ?? []" [isReadOnly]="true"></app-table>
+
+
+</div>

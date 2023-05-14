@@ -42,6 +42,11 @@ export class LocationsService {
     return this.httpService.requestCall(ApiMethod.GET, `${ApiEndpoint.LOCATIONS}/${id}`) as Observable<Location[]>; 
   }
 
+
+  getLocationsAtGivenTime(date: string){
+    return this.httpService.requestCall(ApiMethod.GET, `${ApiEndpoint.LOCATIONS_AT_GIVEN_TIME}/${date}`) as Observable<Location[]>; 
+  }
+
   returnUpdateLocationPayload(currentlySavedLocation: Location, newLocation: Location): LocationToSend{
 
     return {

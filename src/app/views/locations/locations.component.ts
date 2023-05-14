@@ -8,30 +8,11 @@ import { LocationsService } from './locations.service';
   templateUrl: './locations.component.html',
   styleUrls: ['./locations.component.scss']
 })
-export class LocationsComponent implements OnInit{
+export class LocationsComponent {
 
-  currentCountryCodes: Observable<CountryCode[]> = of([]);
-  currentActivities: Observable<Activity[]> = of([]);
-  currentLocations: Observable<Location[]> = of([]);
-
-
-  constructor(private locationsService: LocationsService){}
-
-  ngOnInit(): void {
-
-    this.currentCountryCodes = this.locationsService.getCurrentCountryCodes();
-    this.currentLocations = this.locationsService.getCurrentLocations();
-    this.currentActivities = this.locationsService.getCurrentActivities();
-  }
-
-  printCountryCode(countryCodes: CountryCode){
-    console.log(countryCodes);
-  }
+ 
 
   refreshTable(){
-    this.currentLocations = this.locationsService.getCurrentLocations();
+
   }
-  
-
-
 }
