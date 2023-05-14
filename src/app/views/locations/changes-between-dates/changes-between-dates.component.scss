@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: center;   
     margin-top: 20px;
+    flex-direction: column;
 }
 
 app-datepicker{
@@ -12,5 +13,11 @@ app-datepicker{
 
 .settings{
     display: flex;
+    align-items: center;
+}
+
+mat-card-content{
+    display: flex;
+    justify-content: end;
     align-items: center;
 }

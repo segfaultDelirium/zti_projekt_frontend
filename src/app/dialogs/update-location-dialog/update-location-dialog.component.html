@@ -29,7 +29,7 @@
     <mat-form-field appearance="fill">
         <mat-label>countryCode</mat-label>
         <mat-select [(ngModel)]="data.location.countryCode" name="countryCode"  [ngClass]="{'modified': data.location.countryCode.countryCodeId !== data.currentlySavedLocation.countryCode.countryCodeId}">
-            <mat-option *ngFor="let countryCode of data.countryCodes" [value]="countryCode">
+            <mat-option *ngFor="let countryCode of countryCodes" [value]="countryCode">
                 {{countryCode.countryCode}}
             </mat-option>
         </mat-select>
@@ -38,7 +38,7 @@
     <mat-form-field appearance="fill">
         <mat-label>activity</mat-label>
         <mat-select [(ngModel)]="data.location.activity" name="activity" [ngClass]="{'modified': data.location.activity.activityId !== data.currentlySavedLocation.activity.activityId}">
-            <mat-option *ngFor="let activity of data.activities" [value]="activity">
+            <mat-option *ngFor="let activity of activities" [value]="activity">
                 {{activity.activityName}}
             </mat-option>
         </mat-select>
@@ -48,5 +48,4 @@
 <div class="mat-dialog-actions" mat-dialog-actions>
     <button mat-button mat-dialog-close>Cancel</button>
     <button mat-button (click)="save(data.location)">Send Update</button>
-    <!-- <button mat-button [mat-dialog-close]="data.location" cdkFocusInitial>Send Update</button> -->
 </div>

@@ -66,9 +66,3 @@ export interface CreationResult extends ModificationResult {
     createdRecordId: number
 }
 
-export type LocationActivitiesCountryCodes = {
-    activities: Activity[],
-    countryCodes: CountryCode[],
-    location: Location,
-    currentlySavedLocation: Readonly<Location>
-}

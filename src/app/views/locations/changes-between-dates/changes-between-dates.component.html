@@ -11,3 +11,19 @@
     </div>
 
 </div>
+<div *ngIf=" (locations | async) as locations">
+    <mat-card id="tableHeader">
+        <mat-card-content>
+            <div *ngIf="locations.length === 0">
+                <span>No records found</span>
+            </div>
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="refreshTable(startDate, endDate)"
+                matTooltip="Refresh Table" [disabled]="areDatesInvalid(startDate, endDate)">
+                <mat-icon class="cursor-pointer" aria-hidden="false" fontIcon="refresh" ></mat-icon>
+            </button>
+            
+            
+        </mat-card-content>
+    </mat-card>
+    <app-table [locations]="locations" [isReadOnly]="true"></app-table>
+</div>

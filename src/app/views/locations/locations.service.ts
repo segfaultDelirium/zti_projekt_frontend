@@ -77,6 +77,10 @@ export class LocationsService {
     };
   }
 
+  getLocationsWhichChangedBetweenTimestamps(startDate: string, endDate: string){
+    return this.httpService.requestCall(ApiMethod.GET, `${ApiEndpoint.LOCATIONS_CHANGES}?startDate=${startDate}&endDate=${endDate}`) as Observable<Location[]>; 
+  }
+
   
 
 

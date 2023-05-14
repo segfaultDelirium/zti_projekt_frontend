@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable, map, of } from 'rxjs';
+import { LocationsService } from '../locations.service';
+import { Location } from 'src/app/types';
 
 @Component({
   selector: 'app-changes-between-dates',
@@ -9,12 +12,21 @@ export class ChangesBetweenDatesComponent {
   startDate: string | null = null;
   endDate: string | null = null;
 
+  locations: Observable<Location[]> = of([]);
+
   yesterdayDate = getYesterdatDate();
+
+  constructor(private locationsService: LocationsService){}
 
   refreshTable(startDate: string | null, endDate: string | null){
     // if(this.isDateInvalid(date)) return;
     // console.log(date);
-    // this.locations = this.locationsService.getLocationsAtGivenTime(date!);
+    this.locations = this.locationsService.getLocationsWhichChangedBetweenTimestamps(startDate!, endDate!).pipe(
+      map(locations => {
+        console.log(locations);
+        return locations;
+      })
+    )
   }
 
   handleStartDateChange(date: string | null){

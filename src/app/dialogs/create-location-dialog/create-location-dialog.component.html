@@ -3,33 +3,33 @@
 
     <mat-form-field appearance="fill">
         <mat-label>streetAddress</mat-label>
-        <input matInput [(ngModel)]="data.newLocation.streetAddress" >
+        <input matInput [(ngModel)]="data.streetAddress" >
     </mat-form-field>
     
     <mat-form-field appearance="fill">
         <mat-label>city</mat-label>
-        <input matInput [(ngModel)]="data.newLocation.city">
+        <input matInput [(ngModel)]="data.city">
     </mat-form-field>
     
     <mat-form-field appearance="fill">
         <mat-label>zipcode</mat-label>
-        <input matInput [(ngModel)]="data.newLocation.zipcode" >
+        <input matInput [(ngModel)]="data.zipcode" >
     </mat-form-field>
     
     <mat-form-field appearance="fill">
         <mat-label>state</mat-label>
-        <input matInput [(ngModel)]="data.newLocation.state" >
+        <input matInput [(ngModel)]="data.state" >
     </mat-form-field>
     
     <mat-form-field appearance="fill">
         <mat-label>companyName</mat-label>
-        <input matInput [(ngModel)]="data.newLocation.companyName">
+        <input matInput [(ngModel)]="data.companyName">
     </mat-form-field>
     
     <mat-form-field appearance="fill">
         <mat-label>countryCode</mat-label>
-        <mat-select [(ngModel)]="data.newLocation.countryCode" name="countryCode" >
-            <mat-option *ngFor="let countryCode of data.countryCodes" [value]="countryCode">
+        <mat-select [(ngModel)]="data.countryCode" name="countryCode" >
+            <mat-option *ngFor="let countryCode of countryCodes" [value]="countryCode">
                 {{countryCode.countryCode}}
             </mat-option>
         </mat-select>
@@ -37,8 +37,8 @@
     
     <mat-form-field appearance="fill">
         <mat-label>activity</mat-label>
-        <mat-select [(ngModel)]="data.newLocation.activity" name="activity" >
-            <mat-option *ngFor="let activity of data.activities" [value]="activity">
+        <mat-select [(ngModel)]="data.activity" name="activity" >
+            <mat-option *ngFor="let activity of activities" [value]="activity">
                 {{activity.activityName}}
             </mat-option>
         </mat-select>
@@ -47,5 +47,5 @@
 
 <div class="mat-dialog-actions" mat-dialog-actions>
     <button mat-button mat-dialog-close>Cancel</button>
-    <button mat-button (click)="save(data.newLocation)">Send Update</button>
+    <button mat-button (click)="save(data)">Send Update</button>
 </div>

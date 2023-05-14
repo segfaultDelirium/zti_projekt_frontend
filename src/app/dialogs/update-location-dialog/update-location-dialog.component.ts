@@ -1,12 +1,16 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { Activity, CountryCode, Location, LocationActivitiesCountryCodes, LocationToSend, ModificationResult } from 'src/app/types';
+import { Activity, CountryCode, Location, LocationToSend, ModificationResult } from 'src/app/types';
 import { HttpService } from 'src/app/util/http/http.service';
 import { LocationsService } from 'src/app/views/locations/locations.service';
 import { ModificationResultDialogComponent } from '../modification-result-dialog/modification-result-dialog.component';
 
 
+export type UpdateLocationDialogInput = {
+  location: Location,
+  currentlySavedLocation: Location,
+}
 
 @Component({
   selector: 'app-update-location-dialog',
@@ -22,7 +26,7 @@ export class UpdateLocationDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<UpdateLocationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: LocationActivitiesCountryCodes,
+    @Inject(MAT_DIALOG_DATA) public data: UpdateLocationDialogInput,
     private locationsService: LocationsService,
     public modificationResultDialog: MatDialog,
   ) {}
@@ -35,7 +39,7 @@ export class UpdateLocationDialogComponent {
     this.activitiesSubscription = this.locationsService.getCurrentActivities().subscribe(activities => {
       this.activities = activities;
 
-      this.data.location.activity = this.data.activities
+      this.data.location.activity = this.activities
         .filter(activity => activity.activityId === this.data.location.activity.activityId)[0]
 
     })
@@ -43,7 +47,7 @@ export class UpdateLocationDialogComponent {
     this.countryCodesSubscription = this.locationsService.getCurrentCountryCodes().subscribe(countryCodes => {
       this.countryCodes = countryCodes;
       
-      this.data.location.countryCode = this.data.countryCodes
+      this.data.location.countryCode = this.countryCodes
         .filter(countryCode => countryCode.countryCodeId === this.data.location.countryCode.countryCodeId)[0];
     })
 
