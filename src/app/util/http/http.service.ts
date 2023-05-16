@@ -1,8 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, share } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Environments } from 'src/environments/environmentsEnum';
 
-const apiBaseUrl = 'http://localhost:8080/';
+
+let apiBaseUrl = "http://localhost:8080/";
+
+switch(environment.env){
+  case Environments.LOCAL: { 
+    apiBaseUrl = Environments.LOCAL;
+   break; }
+  case Environments.REMOTE_PROD: { apiBaseUrl = Environments.REMOTE_PROD; break; }
+}
 
 export enum ApiEndpoint{
   ACTIVITIES = 'activities',
@@ -58,5 +68,10 @@ export class HttpService {
     // }
     // console.error('An unknown error occured:', error);
 
+  }
+
+  public printEnvironment(){
+    console.log(environment);
+    console.log(apiBaseUrl);
   }
 }
