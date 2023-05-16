@@ -54,10 +54,14 @@
 
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" 
+        [ngClass]="getRowClass(row.timestamp)">
+      ></tr>
     </table>
+    <!-- <button (click)="printLocations(timeline)">printLocations</button> -->
   </ng-container>
 </div>
 <div class="mat-dialog-actions" mat-dialog-actions>
   <button mat-button mat-dialog-close>Close</button>
+  
 </div>

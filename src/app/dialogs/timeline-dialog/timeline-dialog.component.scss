@@ -1,0 +1,5 @@
+@import '/src/styles.scss';
+
+::ng-deep .row-highlight td.mat-mdc-cell{
+    color: $primary-color; // !important;
+  }

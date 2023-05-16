@@ -14,6 +14,8 @@ import { TimelineDialogComponent } from 'src/app/dialogs/timeline-dialog/timelin
 })
 export class TableComponent implements OnDestroy{
 
+  @Input() startDate: string | null = null;
+  @Input() endDate: string | null = null;
   @Input() locations: Location[] = [];
   @Input() isReadOnly: boolean = false;
 
@@ -77,7 +79,9 @@ export class TableComponent implements OnDestroy{
   openTimelineDialog(location: Location){
     const dialogRef = this.dialog.open(TimelineDialogComponent, {
       data: {
-        locationId: location.locationId
+        locationId: location.locationId,
+        startDate: this.startDate,
+        endDate: this.endDate
       },
     });
 

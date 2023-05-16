@@ -19,11 +19,10 @@ export class ChangesBetweenDatesComponent {
   constructor(private locationsService: LocationsService){}
 
   refreshTable(startDate: string | null, endDate: string | null){
-    // if(this.isDateInvalid(date)) return;
-    // console.log(date);
+
     this.locations = this.locationsService.getLocationsWhichChangedBetweenTimestamps(startDate!, endDate!).pipe(
       map(locations => {
-        console.log(locations);
+
         return locations;
       })
     )
@@ -41,7 +40,15 @@ export class ChangesBetweenDatesComponent {
     if(startDate === null || endDate === null) return true;
     if(startDate === "" || endDate === "" ) return true;
     if(startDate === endDate) return true;
+    if(new Date(startDate) >= new Date(endDate)) return true;
     return false;
+  }
+
+  getRefreshButtonTooltip(startDate: string | null, endDate: string | null){
+    let tooltips: string[] = [];
+    if(startDate === null || endDate === null || startDate === "" || endDate === "" ) tooltips.push('Invalid date');
+    else if(startDate === endDate) tooltips.push('Dates cannot be equal.');
+    else if(new Date(startDate) >= new Date(endDate)) tooltips.push('Start date cannot be later than end date.')
   }
 
  

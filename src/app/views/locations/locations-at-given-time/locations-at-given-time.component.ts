@@ -20,7 +20,6 @@ export class LocationsAtGivenTimeComponent {
 
   refreshTable(date: string | null){
     if(this.isDateInvalid(date)) return;
-    console.log(date);
     this.locations = this.locationsService.getLocationsAtGivenTime(date!);
   }
 

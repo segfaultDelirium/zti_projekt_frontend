@@ -7,7 +7,9 @@ import { Location} from 'src/app/types';
 import { LocationsService } from 'src/app/views/locations/locations.service';
 
 type DialogData = {
-  locationId: number
+  locationId: number,
+  startDate: string,
+  endDate: string;
 }
 
 @Component({
@@ -17,6 +19,9 @@ type DialogData = {
 })
 export class TimelineDialogComponent implements OnInit{
   
+  // startDate: string | null = "2023-05-11 10:50:44.056275";
+  // endDate: string | null = "2023-05-17 10:50:44.056275";
+
   timeline: Observable<Location[]> = of([]);
   displayedColumns: string[] = [
     "timestamp", "isActive", "streetAddress", "city", 
@@ -40,12 +45,33 @@ export class TimelineDialogComponent implements OnInit{
       })
     )
   }
+
+  printLocations(locations: Location[]){
+    console.log(locations)
+  }
+
+  getRowClass(timestamp: string): string {
+    debugger;
+    if(timestamp === "current") return '';
+    const date = new Date(timestamp);
+    if(this.data.startDate === null && this.data.endDate === null) return '';
+    if(this.data.startDate === null){
+      const endDate = new Date(this.data.endDate);
+      if(date < endDate) return 'row-highlight';
+      return '';
+    }
+    if(this.data.endDate === null){
+      const startDate = new Date(this.data.startDate);
+      if(date > startDate) return 'row-highlight';
+      return '';
+    }
+
+    const startDate = new Date(this.data.startDate);
+    const endDate = new Date(this.data.endDate);
+    if (date >= startDate && date <= endDate) return 'row-highlight';
+    return '';
+  }
     
+
 }
 
-function addCurrentTimestampToLocation(location: Location){
-  return {
-    ...location,
-    timestamp: "Current"
-  };
-}
