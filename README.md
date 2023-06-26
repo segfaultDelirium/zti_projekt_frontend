@@ -1,3 +1,5 @@
+Demo available at http://143.42.61.153:43555/locations
+
 # ZtiProjektFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
